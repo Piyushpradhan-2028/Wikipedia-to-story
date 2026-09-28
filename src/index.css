@@ -1,0 +1,331 @@
+:root {
+  --ink: #14130f;
+  --ink-2: #1c1a15;
+  --paper: #ece6d8;
+  --muted: rgba(236, 230, 216, 0.62);
+  --gold: #c9a24b;
+  --teal: #5f8a92;
+  --line: rgba(236, 230, 216, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', serif;
+  line-height: 1.6;
+}
+
+.eyebrow {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+}
+
+/* ---------- Landing screen ---------- */
+.landing {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8vh 6vw;
+  background: radial-gradient(ellipse at 30% 20%, rgba(201, 162, 75, 0.08), transparent 55%), var(--ink);
+}
+
+.landing-inner {
+  max-width: 640px;
+}
+
+.landing-inner h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 400;
+  line-height: 1.15;
+  margin: 1.2rem 0 1rem;
+}
+
+.landing-inner .sub {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 56ch;
+  margin-bottom: 2.4rem;
+}
+
+.url-form {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.url-form input {
+  flex: 1 1 320px;
+  background: var(--ink-2);
+  border: 1px solid var(--line);
+  color: var(--paper);
+  padding: 0.9rem 1.1rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.95rem;
+  border-radius: 4px;
+}
+
+.url-form input:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.url-form button {
+  background: var(--gold);
+  color: var(--ink);
+  border: none;
+  padding: 0.9rem 1.6rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.url-form button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.error {
+  margin-top: 1.2rem;
+  color: #e08a6a;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.9rem;
+}
+
+/* ---------- Story page ---------- */
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--gold);
+  z-index: 100;
+  transition: width 0.1s linear;
+}
+
+.back-btn {
+  position: fixed;
+  top: 1.4rem;
+  right: 1.6rem;
+  z-index: 100;
+  background: rgba(20, 19, 15, 0.7);
+  color: var(--paper);
+  border: 1px solid var(--line);
+  padding: 0.5rem 0.9rem;
+  border-radius: 4px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.78rem;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+}
+
+.story section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10vh 8vw;
+  border-bottom: 1px solid var(--line);
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 6vw, 4.4rem);
+  font-weight: 400;
+  line-height: 1.08;
+  max-width: 18ch;
+  margin: 1rem 0 1rem;
+}
+
+.hero .description {
+  color: var(--muted);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.95rem;
+  margin-bottom: 1.6rem;
+}
+
+.hero-image-frame {
+  max-width: 480px;
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 1.8rem;
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.hero-image {
+  display: block;
+  width: 100%;
+  animation: kenburns 18s ease-in-out infinite alternate;
+}
+
+@keyframes kenburns {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.12) translate(-1%, -1%); }
+}
+
+.hero .intro {
+  max-width: 62ch;
+  font-size: 1.08rem;
+  color: rgba(236, 230, 216, 0.9);
+}
+
+.chapter {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.chapter.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.chapter-index {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: var(--teal);
+  margin-bottom: 0.8rem;
+}
+
+.chapter-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.stat-callout {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.stat-number {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-unit {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+/* Story spine: a scroll-linked map of progress down the left edge */
+.spine {
+  position: fixed;
+  left: 1.4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 90;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+.spine-track {
+  position: relative;
+  width: 2px;
+  height: 220px;
+  background: var(--line);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.spine-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--gold);
+  transition: height 0.1s linear;
+}
+
+.spine-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--line);
+  margin: 4px 0;
+  transition: background 0.4s ease, transform 0.4s ease;
+}
+
+.spine-dot.reached {
+  background: var(--gold);
+  transform: scale(1.4);
+}
+
+@media (min-width: 900px) {
+  .spine {
+    display: flex;
+  }
+}
+
+.chapter h2 {
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  font-weight: 400;
+  max-width: 20ch;
+  margin-bottom: 1.4rem;
+}
+
+.chapter p {
+  max-width: 62ch;
+  font-size: 1.02rem;
+  color: rgba(236, 230, 216, 0.88);
+}
+
+.chapter p + p {
+  margin-top: 1rem;
+}
+
+.close {
+  align-items: center;
+  text-align: center;
+  background: var(--ink-2);
+  border-bottom: none;
+}
+
+.close p {
+  max-width: 50ch;
+  margin: 0 auto;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.close a {
+  color: var(--teal);
+}
+
+@media (max-width: 640px) {
+  .story section {
+    padding: 8vh 6vw;
+  }
+  .back-btn {
+    top: 1rem;
+    right: 1rem;
+  }
+}
